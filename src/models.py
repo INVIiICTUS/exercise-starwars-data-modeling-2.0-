@@ -4,7 +4,7 @@ from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
-from eralchemy import render_er
+from eralchemy2 import render_er
 
 Base = declarative_base()
 
@@ -96,13 +96,13 @@ class Favourites(Base):
     def to_dict(self):
         return {}
         
-        
+try:
+    result = render_er(Base, 'diagram.png')
+    print("Success! Check the diagram.png file")
+except Exception as e:
+    print("There was a problem genering the diagram")
+    raise e
 
 
 
 
-
-
-
-## Draw from SQLAlchemy base
-render_er(Base, 'diagram.png')
